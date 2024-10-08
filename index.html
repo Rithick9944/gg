@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #92e2d5f6; /* Changed to blue */
+            color: #171515;
+        }
+
+        .header {
+            background: #dc6b89; /* Darker shade of blue */
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo-heading {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .menu-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-list-items {
+            margin-left: 1.5rem;
+        }
+
+        .links {
+            color: #f8f4f4;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .links:hover {
+            color: #ddd;
+        }
+
+        .hero {
+            background: url('https://example.com/your-background-image.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .intro .headings {
+            margin-bottom: 2rem;
+        }
+
+        .intro .headings .my-heading {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .intro .headings .sub-heading {
+            font-size: 1.5rem;
+        }
+
+        .intro-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .common-btn {
+            background: #110ad5; /* Adjusted for better visibility */
+            color: #fff;
+        }
+        .ghost-btn {
+            background: #110ad5; /* Adjusted for better visibility */
+            color: #fff;
+        }
+
+        .common-btn:hover {
+            background: #003d7a; /* Darker shade of blue */
+        }
+
+        .ghost-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .ghost-btn:hover {
+            background: #fff;
+            color: #007bff;
+        }
+
+        .portfolio {
+            padding: 3rem 1rem;
+            background: #e69595;
+            display: none;
+        }
+
+        .portfolio .portfolio-heading {
+            margin-bottom: 3rem;
+        }
+
+        .portfolio .portfolio-content .my-row {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .my-card {
+            background: #f5f390;
+            padding: 5rem;
+            border-radius: 3px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .my-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about {
+            display: flex;
+            align-items: unset;
+            justify-content: space-around;
+            padding: 1rem 1rem;
+            background: #fff;
+            display: none;
+        }
+
+        .services {
+            padding: 3rem 1rem;
+            background: #fff;
+            display: none;
+        }
+
+        .services .my-row {
+            display: flex;
+            justify-content: space-around;
+        }
+        .my-col {
+            background: #f0b77b;
+            padding: 5rem;
+            border-radius: 3px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            
+            justify-content: center;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .contact {
+            padding: 3rem 1rem;
+            background: #fff;
+            display: none;
+        }
+
+        .contact-form-container,
+        
+
+        .form-controls {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-btn:hover {
+            background: #0056b3;
+        }
+
+        .footer {
+            background: #003d7a; /* Darker shade of blue */
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer-menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-list-items {
+            margin: 0 1rem;
+        }
+
+        .footer-links {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .footer-links:hover {
+            color: #ddd;
+        }
+    </style>
+    <script>
+        function openSectionInNewWindow(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar header section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2 class="logo-heading">GEORGE FERNANTAZ J</h2>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times cross-icon"></i>
+            </div>
+            <div class="menu">
+                <ul class="menu-list">
+                    <li class="menu-list-items">
+                        <a class="links" href="javascript:void(0);" onclick="openSectionInNewWindow('home')">
+                            Home
+                        </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="javascript:void(0);" onclick="openSectionInNewWindow('portfolio')">
+                            Portfolio
+                        </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="javascript:void(0);" onclick="openSectionInNewWindow('about')">
+                            About
+                        </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="javascript:void(0);" onclick="openSectionInNewWindow('services')">
+                            Services
+                        </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="javascript:void(0);" onclick="openSectionInNewWindow('contact')">
+                            Contact Me
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main hero banner -->
+    <section id="home" class="hero">
+        <div class="intro">
+            <div class="headings">
+                <h1 class="greet-heading">Hello, I'm</h1>
+                <h1 class="my-heading">George Fernantaz J</h1>
+                <h4 class="sub-heading">I'm a Full Stack Developer</h4>
+            </div>
+            <p>
+                I have been in this field for about 1years Experience. I have extensive knowledge and experience in technical work, allowing <br>
+                me to handle a wide range of Developement projects with precision and expertise. I pride myself on delivering good results and am always ready to tackle <br>
+                new challenges. If you have any questions or need assistance, don’t hesitate to reach out or explore my website and profile for more details. I am excited <br>
+                to connect with you and welcome you to my professional network!"
+                
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-heading">
+            <h1 class="my-heading text-center">Featured Portfolio</h1>
+        </div>
+        <div class="portfolio-content">
+            <div class="my-row">
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src=""
+                                alt="">
+                        </div>
+                        <h3 class="my-heading">Technical Language Know</h3>
+                        <ul>
+                            Python<br>
+                            Java(Basic)<br>
+                            Html<br>
+                            Css<br>
+                            BootStarp<br>
+                            JavaScript<br>JQuery  
+                            </ul>
+                        
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src=""
+                                alt="">
+                        </div>
+                        <h3 class="my-heading">Projects</h3>
+                        <p class="text">
+                            I have completed over 4 projects
+                            are is Crud Operations, MMBA, Ott Platforms and Stack Markets
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="my-col">
+            <div class="image">
+                <img style="height: 300px;width: 150px;" src="D:\Pic\George Pic.jpeg"
+                    alt="">
+                    <h3 class="my-heading">About Me!</h3>
+            <p class="text">I'm George from Thiruvanai Kovil, Trichy District. My Father is a Carpenter. I Mother is a Home Maker<br>
+            I'm Done my Schooling at St. Joseph's College Hr. Sec. School. Now Currently My Role is Web Developer and then<br>
+            Now I am learnt about the Full Stact Developer and I done My Projects Using Python Language and Done Intern on<br>
+            Crud Operations Using Python Language. After words I'm Moving to the Spark Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-heading">
+            <h3 class="my-heading text-center">My Services</h3>
+        </div>
+        <div class="my-row">
+            <div class="my-col">
+                <div class="my-card service-card">
+                    <div class="service-card-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="my-heading">Transition</h3>
+                    <p class="text">Now Currently My Role is Web Developer and then<br>
+                        Now I am learnt about the Full Stact Developer and I done My Projects Using Python Language and Done Intern on<br>
+                        Crud Operations Using Python Language. After words I'm Moving to the Spark Develope
+                    </p>
+                </div>
+            </div>
+            <div class="my-col">
+                <div class="my-card service-card">
+                    <div class="service-card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="my-heading">Subtitling</h3>
+                    <p class="text">A Full Stack Developer specializing in subtitling works on building and maintaining applications that involve the processing, generation, and display of subtitles for various types of media. This developer possesses expertise in both the front-end (client-side) and back-end (server-side) technologies, ensuring a seamless integration of subtitles into video content across multiple platforms, such as websites, mobile apps, or video streaming services.  
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="my-row">
+            <div class="my-col contact-form-container">
+                <h3 class="my-heading">Contact Form</h3>
+                <form action="#">
+                    <input class="form-controls" type="text" placeholder="Your Name" required>
+                    <input class="form-controls" type="email" placeholder="Your Email" required>
+                    <textarea class="form-controls" rows="5" placeholder="Your Message"></textarea>
+                    <button class="btn form-btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="my-col contact-details">
+                <h3 class="my-heading">Contact Details</h3>
+                <p class="text">
+                 Phone number:63804 61021<br><br>
+                 Email: george@gmail.com<br><br> 
+                 Whatsapp: 63804 61021<br>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <nav class="footer-menu">
+            <ul class="footer-menu-list">
+                <li class="footer-list-items">
+                    <a class="footer-links" href="https://github.com" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li class="footer-list-items">
+                    <a class="footer-links" href="https://linkedin.com" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="footer-list-items">
+                    <a class="footer-links" href="https://twitter.com" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p class="text-center">&copy; 2024 George Fernantaz. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
